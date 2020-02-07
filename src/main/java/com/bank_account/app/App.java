@@ -37,8 +37,7 @@ public class App {
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
             jaxbMarshaller.marshal(accounts1, file);
-
-
+            
         } catch (JAXBException e) {
             e.printStackTrace();
 
