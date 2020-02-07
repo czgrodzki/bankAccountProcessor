@@ -1,5 +1,6 @@
 package com.bank_account.model;
 
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -52,48 +53,23 @@ public class Account implements Serializable {
         return closingDate;
     }
 
-    public boolean checkIfPlnCurrency(){
-        if (this.currency.equals("PLN")){
-            return true;
-        }
-        return false;
+    boolean checkIfPlnCurrency() {
+        return this.currency.equals("PLN");
     }
 
-    public boolean checkIfDebited(){
-        if(this.balance >= 0) {
-            return true;
-        }
-        return false;
+    boolean checkIfDebited() {
+        return this.balance >= 0;
     }
 
 
-    public boolean checkIfClosingDateIsCorrect() {
+    boolean checkIfClosingDateIsCorrect() {
         LocalDate closingLocalDate = LocalDate.parse(this.closingDate);
-        if (closingLocalDate.isAfter(LocalDate.now())) {
-            return true;
-        }
-        return false;
+        return closingLocalDate.isAfter(LocalDate.now());
     }
 
-    public boolean checkIbanCorrectness(){
-        if((this.iban.substring(0,2).equals("PL"))
-                && (this.iban.length() == 28)){
-            return true;
-        }
-        return false;
+    boolean checkIbanCorrectness() {
+        return this.iban.matches("(PL)[0-9]{26}");
     }
-
-    @Override
-    public String toString() {
-        return "Account{" +
-                "iban='" + iban + '\'' +
-                ", name='" + name + '\'' +
-                ", currency='" + currency + '\'' +
-                ", balance=" + balance +
-                ", closingDate=" + closingDate +
-                '}';
-    }
-
 
 }
 
