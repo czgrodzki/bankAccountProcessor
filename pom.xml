@@ -35,12 +35,13 @@
             <version>2.3.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/nl.garvelink.oss/iban -->
+        <!-- https://mvnrepository.com/artifact/org.iban4j/iban4j -->
         <dependency>
-            <groupId>nl.garvelink.oss</groupId>
-            <artifactId>iban</artifactId>
-            <version>1.6.1</version>
+            <groupId>org.iban4j</groupId>
+            <artifactId>iban4j</artifactId>
+            <version>3.2.1</version>
         </dependency>
+
 
 
     </dependencies>
