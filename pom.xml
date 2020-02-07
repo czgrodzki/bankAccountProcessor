@@ -35,6 +35,13 @@
             <version>2.3.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/nl.garvelink.oss/iban -->
+        <dependency>
+            <groupId>nl.garvelink.oss</groupId>
+            <artifactId>iban</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+
 
     </dependencies>
 
