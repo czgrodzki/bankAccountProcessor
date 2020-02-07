@@ -6,6 +6,8 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class BankAccountProcessorClient {
@@ -16,6 +18,7 @@ public class BankAccountProcessorClient {
         File xmlFile = new File(path);
 
         JAXBContext jaxbContext;
+
         try
         {
             jaxbContext = JAXBContext.newInstance(Accounts.class);
@@ -24,12 +27,26 @@ public class BankAccountProcessorClient {
 
             Accounts accounts = (Accounts) jaxbUnmarshaller.unmarshal(xmlFile);
 
-            System.out.println(accounts);
+
+            List<Account> collect = accounts.getAccountList().stream()
+                    .filter(Account::checkIfPlnCurrency)
+                    .filter(Account::checkIfDebited)
+                    .filter(Account::checkIfClosingDateIsCorrect)
+                    .filter(Account::checkIbanCorrectness)
+                    .collect(Collectors.toList());
+
+            for (Account a: collect
+                 ) {
+                System.out.println(a);
+            }
 
         } catch (JAXBException e) {
             e.printStackTrace();
 
         }
+
+
+
     }
 
 

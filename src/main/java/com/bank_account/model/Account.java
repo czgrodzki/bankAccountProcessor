@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
 @XmlRootElement(name = "account")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Account implements Serializable {
@@ -51,6 +52,37 @@ public class Account implements Serializable {
         return closingDate;
     }
 
+    public boolean checkIfPlnCurrency(){
+        if (this.currency.equals("PLN")){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIfDebited(){
+        if(this.balance >= 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+    public boolean checkIfClosingDateIsCorrect() {
+        LocalDate closingLocalDate = LocalDate.parse(this.closingDate);
+        if (closingLocalDate.isAfter(LocalDate.now())) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkIbanCorrectness(){
+        if((this.iban.substring(0,2).equals("PL"))
+                && (this.iban.length() == 28)){
+            return true;
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
@@ -61,6 +93,8 @@ public class Account implements Serializable {
                 ", closingDate=" + closingDate +
                 '}';
     }
+
+
 }
 
 
