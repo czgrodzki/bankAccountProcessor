@@ -11,6 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
@@ -26,10 +27,8 @@ public class Accounts implements Serializable {
 
     public List<Account> bankAccountProcess() {
         return this.getAccount().stream()
-                .filter(AccountPredicates.checkIfPlnCurrency)
-                .filter(AccountPredicates.checkIfDebited)
-                .filter(AccountPredicates.checkIfClosingDateIsCorrect)
-                .filter(AccountPredicates.checkIbanCorrectness)
+                .filter(AccountPredicates.validationPredicates().stream()
+                        .reduce(account1 -> true, Predicate::and))
                 .sorted(Comparator.comparing(Account::getName))
                 .collect(Collectors.toList());
     }
