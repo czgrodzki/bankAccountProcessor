@@ -3,6 +3,7 @@ package com.bank.account.app;
 import com.bank.account.model.Account;
 import com.bank.account.model.Accounts;
 import com.bank.account.service.AccountService;
+import com.bank.account.service.XmlFileService;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -16,34 +17,19 @@ public class App {
 
     public static void main(String[] args) {
 
-        String path = "src/main/resources/";
-        File inputXml = new File(path + "input.xml");
-        File outputXml = new File(path + "output.xml");
-
+        Accounts accounts = new Accounts();
 
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(Accounts.class);
-
-            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-
-            Accounts accounts = (Accounts) jaxbUnmarshaller.unmarshal(inputXml);
-
-
-            List<Account> collect = AccountService.bankAccountProcess(accounts);
-            Accounts accounts1 = new Accounts(collect);
-
-
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
-
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-
-            jaxbMarshaller.marshal(accounts1, outputXml);
-
+          accounts =   XmlFileService.XmlToAccounts("input.xml");
         } catch (JAXBException e) {
-            e.printStackTrace();
-
+            e.getMessage();
         }
 
+        try {
+            XmlFileService.AccountsToXml(accounts, "output2.xml");
+        } catch (JAXBException e) {
+            e.getMessage();
+        }
 
     }
 
