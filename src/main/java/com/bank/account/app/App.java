@@ -2,6 +2,7 @@ package com.bank.account.app;
 
 import com.bank.account.model.Account;
 import com.bank.account.model.Accounts;
+import com.bank.account.service.AccountService;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -28,7 +29,7 @@ public class App {
             Accounts accounts = (Accounts) jaxbUnmarshaller.unmarshal(inputXml);
 
 
-            List<Account> collect = accounts.bankAccountProcess();
+            List<Account> collect = AccountService.bankAccountProcess(accounts);
             Accounts accounts1 = new Accounts(collect);
 
 

@@ -24,7 +24,7 @@ public class AccountPredicates {
     public static Predicate<Account> checkIfClosingDateIsCorrect = account ->
             LocalDate.parse(account.getClosingDate()).isAfter(LocalDate.now());
 
-    public static List<Predicate<Account>> validationPredicates(){
+    public static List<Predicate<Account>> validationPredicates() {
         List<Predicate<Account>> predicates = new ArrayList<>();
         predicates.add(checkIfPlnCurrency);
         predicates.add(checkIfDebited);

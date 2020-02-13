@@ -29,24 +29,6 @@ public class Account implements Serializable {
     private Double balance;
     private String closingDate;
 
-    boolean checkIfPlnCurrency() {
-        return this.currency.equals("PLN");
-    }
-
-    boolean checkIfDebited() {
-        return this.balance >= 0;
-    }
-
-
-    boolean checkIfClosingDateIsCorrect() {
-        LocalDate closingLocalDate = LocalDate.parse(this.closingDate);
-        return closingLocalDate.isAfter(LocalDate.now());
-    }
-
-    boolean checkIbanCorrectness() {
-        return this.iban.matches("(PL)[0-9]{26}");
-    }
-
 }
 
 
