@@ -1,5 +1,7 @@
 package com.bank.account.model;
 
+import com.bank.account.predicates.AccountPredicates;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -28,10 +30,10 @@ public class Accounts implements Serializable {
 
     public List<Account> bankAccountProcess() {
         return this.getAccountList().stream()
-                .filter(Account::checkIfPlnCurrency)
-                .filter(Account::checkIfDebited)
-                .filter(Account::checkIfClosingDateIsCorrect)
-                .filter(Account::checkIbanCorrectness)
+                .filter(AccountPredicates.checkIbanCorrectness)
+                .filter(AccountPredicates.checkIfClosingDateIsCorrect)
+                .filter(AccountPredicates.checkIfDebited)
+                .filter(AccountPredicates.checkIfPlnCurrency)
                 .sorted(Comparator.comparing(Account::getName))
                 .collect(Collectors.toList());
     }
