@@ -1,7 +1,7 @@
-package com.bank_account.app;
+package com.bank.account.app;
 
-import com.bank_account.model.Account;
-import com.bank_account.model.Accounts;
+import com.bank.account.model.Account;
+import com.bank.account.model.Accounts;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -16,8 +16,8 @@ public class App {
     public static void main(String[] args) {
 
         String path = "src/main/resources/";
-        File xmlFile = new File(path + "input.xml");
-        File file = new File(path + "output.xml");
+        File inputXml = new File(path + "input.xml");
+        File outputXml = new File(path + "output.xml");
 
 
         try {
@@ -25,7 +25,7 @@ public class App {
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-            Accounts accounts = (Accounts) jaxbUnmarshaller.unmarshal(xmlFile);
+            Accounts accounts = (Accounts) jaxbUnmarshaller.unmarshal(inputXml);
 
 
             List<Account> collect = accounts.bankAccountProcess();
@@ -36,8 +36,8 @@ public class App {
 
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-            jaxbMarshaller.marshal(accounts1, file);
-            
+            jaxbMarshaller.marshal(accounts1, outputXml);
+
         } catch (JAXBException e) {
             e.printStackTrace();
 

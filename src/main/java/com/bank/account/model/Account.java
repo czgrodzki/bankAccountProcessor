@@ -1,4 +1,4 @@
-package com.bank_account.model;
+package com.bank.account.model;
 
 
 import javax.xml.bind.annotation.XmlAccessType;
