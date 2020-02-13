@@ -11,25 +11,17 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.List;
+import java.util.logging.LogManager;
 
 
 public class App {
 
     public static void main(String[] args) {
 
-        Accounts accounts = new Accounts();
+        Accounts accounts = XmlFileService.XmlToAccounts("input.xml");
+        Accounts validateAccounts = AccountService.bankAccountProcess(accounts);
+        XmlFileService.AccountsToXml(validateAccounts, "output.xml");
 
-        try {
-          accounts =   XmlFileService.XmlToAccounts("input.xml");
-        } catch (JAXBException e) {
-            e.getMessage();
-        }
-
-        try {
-            XmlFileService.AccountsToXml(accounts, "output2.xml");
-        } catch (JAXBException e) {
-            e.getMessage();
-        }
 
     }
 
