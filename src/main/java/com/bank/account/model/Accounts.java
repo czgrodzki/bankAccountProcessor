@@ -1,5 +1,6 @@
 package com.bank.account.model;
 
+import com.bank.account.predicates.AccountPredicates;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,10 +26,10 @@ public class Accounts implements Serializable {
 
     public List<Account> bankAccountProcess() {
         return this.getAccount().stream()
-                .filter(Account::checkIfPlnCurrency)
-                .filter(Account::checkIfDebited)
-                .filter(Account::checkIfClosingDateIsCorrect)
-                .filter(Account::checkIbanCorrectness)
+                .filter(AccountPredicates.checkIfPlnCurrency)
+                .filter(AccountPredicates.checkIfDebited)
+                .filter(AccountPredicates.checkIfClosingDateIsCorrect)
+                .filter(AccountPredicates.checkIbanCorrectness)
                 .sorted(Comparator.comparing(Account::getName))
                 .collect(Collectors.toList());
     }
