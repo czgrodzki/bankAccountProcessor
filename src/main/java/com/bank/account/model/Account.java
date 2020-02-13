@@ -1,6 +1,10 @@
 package com.bank.account.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -8,6 +12,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 
 @XmlRootElement(name = "account")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -20,38 +28,6 @@ public class Account implements Serializable {
     private String currency;
     private Double balance;
     private String closingDate;
-
-    public Account() {
-    }
-
-    public Account(String iban, String name, String currency, Double balance, String date) {
-        this.iban = iban;
-        this.name = name;
-        this.currency = currency;
-        this.balance = balance;
-        this.closingDate = date;
-    }
-
-
-    public String getIban() {
-        return iban;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public Double getBalance() {
-        return balance;
-    }
-
-    public String getDate() {
-        return closingDate;
-    }
 
     boolean checkIfPlnCurrency() {
         return this.currency.equals("PLN");
