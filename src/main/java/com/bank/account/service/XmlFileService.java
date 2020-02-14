@@ -47,9 +47,10 @@ public class XmlFileService {
         }
     }
 
-    public static void AccountsToXml(Accounts accounts) {
-        if (accounts.getAccount().isEmpty()) {
-            LOGGER.info("No data received");
+    public static void AccountsToXml(Accounts accounts) throws EmptyDataException {
+        if (accounts == null || accounts.getAccount() == null) {
+            LOGGER.error("No data received");
+            throw new EmptyDataException("Empty dataset");
         } else {
             LOGGER.info("Received data to write to XML");
             try {

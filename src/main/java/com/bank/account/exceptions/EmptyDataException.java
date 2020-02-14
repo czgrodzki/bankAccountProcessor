@@ -11,6 +11,6 @@ public class EmptyDataException extends Exception {
 
     @Override
     public String toString() {
-        return "EmptyDataException:" + message;
+        return "EmptyDataException: " + message;
     }
 }

@@ -9,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 
 
 import java.util.Comparator;
-import java.util.EmptyStackException;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -31,6 +30,7 @@ public class AccountService {
 
             Accounts accountsWithValidateList = new Accounts();
             accountsWithValidateList.setAccount(listOfValidateAccount);
+            LOGGER.info("Accounts data processed");
             return accountsWithValidateList;
         }
     }

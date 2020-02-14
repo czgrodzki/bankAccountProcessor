@@ -1,3 +1,7 @@
-[INFO ] 2020-02-14 11:12:01.209 [main] XmlFileService - Data received from input.xml
-[WARN ] 2020-02-14 11:12:01.211 [main] XmlFileService - No account data
-[ERROR] 2020-02-14 11:12:01.211 [main] EmptyDataException - An error occurred Empty dataset
+[INFO ] 2020-02-14 16:06:41.247 [main] AccountService - Accounts data processed
+[INFO ] 2020-02-14 16:06:41.254 [main] AccountService - Accounts data processed
+[WARN ] 2020-02-14 16:06:41.257 [main] AccountService - No data received
+[INFO ] 2020-02-14 16:06:41.259 [main] AccountService - Accounts data processed
+[INFO ] 2020-02-14 16:06:41.263 [main] AccountService - Accounts data processed
+[INFO ] 2020-02-14 16:06:41.266 [main] AccountService - Accounts data processed
+[WARN ] 2020-02-14 16:06:41.268 [main] AccountService - No data received
