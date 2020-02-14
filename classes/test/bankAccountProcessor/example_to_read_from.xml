@@ -1,8 +1,0 @@
-<accounts>
-    <account iban="PL12345678544345678901234231">
-        <name>Zenak Jach</name>
-        <currency>PLN</currency>
-        <balance>1222</balance>
-        <closingDate>2023-12-31</closingDate>
-    </account>
-</accounts>
