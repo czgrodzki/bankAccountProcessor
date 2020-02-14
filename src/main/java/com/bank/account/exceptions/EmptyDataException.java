@@ -8,4 +8,9 @@ public class EmptyDataException extends Exception {
     public EmptyDataException(String message) {
         this.message = message;
     }
+
+    @Override
+    public String toString() {
+        return "EmptyDataException:" + message;
+    }
 }
