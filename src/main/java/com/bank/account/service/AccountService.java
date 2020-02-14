@@ -18,7 +18,7 @@ public class AccountService {
     private static final Logger LOGGER = LogManager.getLogger(AccountService.class.getName());
 
     public static Accounts bankAccountProcess(Accounts accounts) throws EmptyDataException {
-        if (accounts == null || accounts.getAccount() == null){
+        if (accounts == null || accounts.getAccount() == null) {
             LOGGER.warn("No data received");
             throw new EmptyDataException("Empty dataset");
         } else {

@@ -22,7 +22,7 @@ public class AccountPredicates {
             account.getIban().matches("(PL)[0-9]{26}");
 
     public static Predicate<Account> checkIfClosingDateIsCorrect = account ->
-            LocalDate.parse(account.getClosingDate()).isAfter(LocalDate.now());
+            LocalDate.parse(account.getClosingDate()).isAfter(LocalDate.now().minusDays(1));
 
     public static List<Predicate<Account>> validationPredicates() {
         List<Predicate<Account>> predicates = new ArrayList<>();

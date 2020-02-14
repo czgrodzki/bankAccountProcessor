@@ -1,7 +1,5 @@
-[INFO ] 2020-02-14 16:06:41.247 [main] AccountService - Accounts data processed
-[INFO ] 2020-02-14 16:06:41.254 [main] AccountService - Accounts data processed
-[WARN ] 2020-02-14 16:06:41.257 [main] AccountService - No data received
-[INFO ] 2020-02-14 16:06:41.259 [main] AccountService - Accounts data processed
-[INFO ] 2020-02-14 16:06:41.263 [main] AccountService - Accounts data processed
-[INFO ] 2020-02-14 16:06:41.266 [main] AccountService - Accounts data processed
-[WARN ] 2020-02-14 16:06:41.268 [main] AccountService - No data received
+[INFO ] 2020-02-14 19:02:09.726 [main] XmlFileService - Data received from src/main/resources/input.xml
+[INFO ] 2020-02-14 19:02:09.728 [main] XmlFileService - Account data propagated
+[INFO ] 2020-02-14 19:02:09.737 [main] AccountService - Accounts data processed
+[INFO ] 2020-02-14 19:02:09.737 [main] XmlFileService - Received data to write to XML
+[INFO ] 2020-02-14 19:02:09.745 [main] XmlFileService - Data extracted to XML file src/main/resources/output.xml

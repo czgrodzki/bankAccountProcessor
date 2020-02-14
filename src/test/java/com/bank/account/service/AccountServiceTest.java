@@ -129,7 +129,7 @@ class AccountServiceTest {
         Accounts processedAccounts = bankAccountProcess(accounts);
 
         //then
-        assertEquals(4, processedAccounts.getAccount().size());
+        assertEquals(5, processedAccounts.getAccount().size());
         assertThat(processedAccounts.getAccount().get(0).getClosingDate(),
                 Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
         assertThat(processedAccounts.getAccount().get(1).getClosingDate(),
@@ -137,6 +137,8 @@ class AccountServiceTest {
         assertThat(processedAccounts.getAccount().get(2).getClosingDate(),
                 Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
         assertThat(processedAccounts.getAccount().get(3).getClosingDate(),
+                Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
+        assertThat(processedAccounts.getAccount().get(4).getClosingDate(),
                 Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
     }
 
@@ -169,6 +171,5 @@ class AccountServiceTest {
         assertThat(processedAccounts.getAccount().get(2), Matchers.is(allGood4));
         assertThat(processedAccounts.getAccount().get(3), Matchers.is(allGood3));
     }
-
 
 }
