@@ -1,0 +1,5 @@
+[INFO ] 2020-02-14 19:43:59.961 [main] XmlFileService - Data received from src/main/resources/input.xml
+[INFO ] 2020-02-14 19:43:59.963 [main] XmlFileService - Account data propagated
+[INFO ] 2020-02-14 19:43:59.973 [main] AccountService - Accounts data processed
+[INFO ] 2020-02-14 19:43:59.973 [main] XmlFileService - Received data to write to XML
+[INFO ] 2020-02-14 19:43:59.981 [main] XmlFileService - Data extracted to XML file src/main/resources/output.xml
