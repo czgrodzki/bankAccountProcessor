@@ -1,5 +1,6 @@
 package com.bank.account.service;
 
+import com.bank.account.exceptions.EmptyDataException;
 import com.bank.account.model.Account;
 import com.bank.account.model.Accounts;
 import org.apache.logging.log4j.LogManager;
@@ -15,51 +16,54 @@ import java.util.List;
 public class XmlFileService {
 
     private static final String PATH = "src/main/resources/";
-    static File inputXml = new File(PATH + "input.xml");
-    static File outputXml = new File(PATH + "output.xml");
+    private static String inPut = "input.xml";
+    private static String outPut = "output.xml";
+
 
     private static JAXBContext jaxbContext;
 
-    private static Logger logger = LogManager.getLogger(XmlFileService.class.getName());
+    private static final Logger LOGGER = LogManager.getLogger(XmlFileService.class.getName());
 
-    public static Accounts XmlToAccounts(String fileName) {
+    public static Accounts XmlToAccounts() throws EmptyDataException {
         Accounts accounts = new Accounts();
         try {
             jaxbContext = JAXBContext.newInstance(Accounts.class);
 
             Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 
-            accounts = (Accounts) jaxbUnmarshaller.unmarshal(new File(PATH + fileName));
-            logger.info("Data received from " + fileName);
+            accounts = (Accounts) jaxbUnmarshaller.unmarshal(new File(PATH + inPut));
+            LOGGER.info("Data received from " + inPut);
         } catch (JAXBException e) {
-            logger.error("Something went wrong " + e.getCause());
+            LOGGER.error("An error occurred ", e);
         }
 
-        if (accounts.getAccount().isEmpty()){
-            logger.error("No account data");
-            return null; // ??????
+        if (accounts == null || accounts.getAccount() == null) {
+            LOGGER.error("No account data");
+            throw new EmptyDataException("Empty dataset");
+
         } else {
-            logger.info("Account data propagated");
+            LOGGER.info("Account data propagated");
             return accounts;
         }
     }
 
-    public static void AccountsToXml(Accounts accounts, String outPutFileName) {
-        if(accounts.getAccount().isEmpty()){
-            logger.info("No data received");
+    public static void AccountsToXml(Accounts accounts) {
+        if (accounts.getAccount().isEmpty()) {
+            LOGGER.info("No data received");
         } else {
-            logger.info("Received data to write to XML");
-        }
-        try {
-            Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+            LOGGER.info("Received data to write to XML");
+            try {
+                Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
-            jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+                jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
-            jaxbMarshaller.marshal(accounts, new File(PATH + outPutFileName));
-            logger.info("Data extracted to XML file " + outPutFileName);
-        } catch (JAXBException e) {
-            logger.error("Something went wrong " + e.getCause());
+                jaxbMarshaller.marshal(accounts, new File(PATH + outPut));
+                LOGGER.info("Data extracted to XML file " + outPut);
+            } catch (JAXBException e) {
+                LOGGER.error("An error occurred  ", e);
+            }
         }
+
 
     }
 

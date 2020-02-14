@@ -1,9 +1,11 @@
 package com.bank.account.app;
 
+import com.bank.account.exceptions.EmptyDataException;
 import com.bank.account.model.Account;
 import com.bank.account.model.Accounts;
 import com.bank.account.service.AccountService;
 import com.bank.account.service.XmlFileService;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -16,13 +18,12 @@ import java.util.logging.LogManager;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws EmptyDataException {
 
-        Accounts accounts = XmlFileService.XmlToAccounts("input.xml");
+        Accounts accounts = XmlFileService.XmlToAccounts();
         Accounts validateAccounts = AccountService.bankAccountProcess(accounts);
-        XmlFileService.AccountsToXml(validateAccounts, "output.xml");
-
-
+        XmlFileService.AccountsToXml(validateAccounts);
+        
     }
 
 
