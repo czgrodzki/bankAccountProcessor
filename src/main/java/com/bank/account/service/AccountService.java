@@ -27,7 +27,7 @@ public class AccountService {
                             .reduce(account1 -> true, Predicate::and))
                     .sorted(Comparator.comparing(Account::getName))
                     .collect(Collectors.toList());
-            
+
             LOGGER.info("Accounts data processed");
             return new Accounts(listOfValidateAccount);
         }
