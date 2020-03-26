@@ -11,7 +11,10 @@ with the processed list that meet followed conditions:
 - sorted ascending due to name
 
 #### Example
--------------------input.xml------------------------
+
+
+##### input.xml
+```sh
 <?xml version = "1.0"?>
 <accounts>
 	<account iban="PL61109010140000071219812870">
@@ -63,8 +66,10 @@ with the processed list that meet followed conditions:
 		<closingDate>2010-01-01</closingDate>
 	</account>
 </accounts>
+```
 
--------------------output.xml------------------------
+##### output.xml
+```sh
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <accounts>
 	<account iban="PL61109010140000071219812875">
@@ -86,3 +91,4 @@ with the processed list that meet followed conditions:
 		<closingDate>2029-10-11</closingDate>
 	</account>
 </accounts>
+```
