@@ -1,6 +1,7 @@
 package com.bank.account.service;
 
 import com.bank.account.exceptions.EmptyDataException;
+import com.bank.account.model.Account;
 import com.bank.account.model.Accounts;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

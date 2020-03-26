@@ -14,6 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @EqualsAndHashCode
+@Data
 
 @XmlRootElement(name = "account")
 @XmlAccessorType(XmlAccessType.FIELD)

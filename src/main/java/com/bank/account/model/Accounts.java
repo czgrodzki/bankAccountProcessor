@@ -10,7 +10,7 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Data
 @EqualsAndHashCode
 
 @XmlRootElement(name = "accounts")
