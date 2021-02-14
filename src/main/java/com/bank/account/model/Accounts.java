@@ -12,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode
-
 @XmlRootElement(name = "accounts")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Accounts implements Serializable {
