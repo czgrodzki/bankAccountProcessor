@@ -4,7 +4,6 @@ package com.bank.account.service;
 import com.bank.account.exceptions.EmptyDataException;
 import com.bank.account.model.Account;
 import com.bank.account.model.Accounts;
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +14,7 @@ import java.util.List;
 
 import static com.bank.account.service.AccountService.bankAccountProcess;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.hamcrest.Matchers.*;
 
 class AccountServiceTest {
 
@@ -99,11 +97,7 @@ class AccountServiceTest {
         Accounts processedAccounts = bankAccountProcess(accounts);
 
         //then
-        assertEquals(4, processedAccounts.getAccount().size());
-        assertEquals("PLN", processedAccounts.getAccount().get(0).getCurrency());
-        assertEquals("PLN", processedAccounts.getAccount().get(1).getCurrency());
-        assertEquals("PLN", processedAccounts.getAccount().get(2).getCurrency());
-        assertEquals("PLN", processedAccounts.getAccount().get(3).getCurrency());
+        assertThat(processedAccounts.getAccount(), containsInAnyOrder(allGood1, allGood2, allGood3, allGood4));
     }
 
     @Test
@@ -114,32 +108,19 @@ class AccountServiceTest {
         Accounts processedAccounts = bankAccountProcess(accounts);
 
         //then
-        assertEquals(4, processedAccounts.getAccount().size());
-        assertThat(processedAccounts.getAccount().get(0).getBalance(), Matchers.greaterThanOrEqualTo(0.0));
-        assertThat(processedAccounts.getAccount().get(1).getBalance(), Matchers.greaterThanOrEqualTo(0.0));
-        assertThat(processedAccounts.getAccount().get(2).getBalance(), Matchers.greaterThanOrEqualTo(0.0));
-        assertThat(processedAccounts.getAccount().get(3).getBalance(), Matchers.greaterThanOrEqualTo(0.0));
+        assertThat(processedAccounts.getAccount(), containsInAnyOrder(allGood1, allGood2, allGood3, allGood4));
     }
 
     @Test
-    void shouldReturn4ElementsWithClosingDateAfterToday() throws EmptyDataException {
+    void shouldReturn5ElementsWithClosingDateAfterToday() throws EmptyDataException {
 
         //given
         //when
         Accounts processedAccounts = bankAccountProcess(accounts);
 
         //then
-        assertEquals(5, processedAccounts.getAccount().size());
-        assertThat(processedAccounts.getAccount().get(0).getClosingDate(),
-                Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
-        assertThat(processedAccounts.getAccount().get(1).getClosingDate(),
-                Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
-        assertThat(processedAccounts.getAccount().get(2).getClosingDate(),
-                Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
-        assertThat(processedAccounts.getAccount().get(3).getClosingDate(),
-                Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
-        assertThat(processedAccounts.getAccount().get(4).getClosingDate(),
-                Matchers.greaterThanOrEqualTo(LocalDate.now().toString()));
+        assertThat(processedAccounts.getAccount(), containsInAnyOrder(allGood1, allGood2, allGood3, allGood4));
+
     }
 
     @Test
@@ -150,11 +131,8 @@ class AccountServiceTest {
         Accounts processedAccounts = bankAccountProcess(accounts);
 
         //then
-        assertEquals(4, processedAccounts.getAccount().size());
-        assertTrue(processedAccounts.getAccount().get(0).getIban().matches("(PL)[0-9]{26}"));
-        assertTrue(processedAccounts.getAccount().get(1).getIban().matches("(PL)[0-9]{26}"));
-        assertTrue(processedAccounts.getAccount().get(2).getIban().matches("(PL)[0-9]{26}"));
-        assertTrue(processedAccounts.getAccount().get(3).getIban().matches("(PL)[0-9]{26}"));
+        assertThat(processedAccounts.getAccount(), containsInAnyOrder(allGood1, allGood2, allGood3, allGood4));
+
     }
 
     @Test
@@ -165,11 +143,8 @@ class AccountServiceTest {
         Accounts processedAccounts = bankAccountProcess(accounts);
 
         //then
-        assertEquals(4, processedAccounts.getAccount().size());
-        assertThat(processedAccounts.getAccount().get(0), Matchers.is(allGood2));
-        assertThat(processedAccounts.getAccount().get(1), Matchers.is(allGood1));
-        assertThat(processedAccounts.getAccount().get(2), Matchers.is(allGood4));
-        assertThat(processedAccounts.getAccount().get(3), Matchers.is(allGood3));
+        assertThat(processedAccounts.getAccount(), containsInAnyOrder(allGood1, allGood2, allGood3, allGood4));
+
     }
 
 }
